@@ -73,3 +73,5 @@ output_dir = Path("..") / "data" / "preprocessing"
 output_dir.mkdir(parents=True, exist_ok =True)
 output_path = output_dir / "mens_season_ratings.csv"
 merged_df.to_csv(output_path, index=False)
+
+# 2017,80,Eastern Washington,111.3,113.6,-2.3,1.0
