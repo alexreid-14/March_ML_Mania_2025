@@ -65,8 +65,6 @@ def get_srs_ratings(years):
     df = pd.concat(df, new_row, ignore_index=True)
     return df 
 
-
-
 adjusted_ratings =  get_adjusted_ratings(years) 
 srs_ratings = get_srs_ratings(years) 
 
