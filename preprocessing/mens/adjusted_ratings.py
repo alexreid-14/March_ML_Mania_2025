@@ -60,18 +60,17 @@ def get_srs_ratings(years):
         else:
             print(f"Failed to retrieve data {response.status_code}") 
     df = pd.DataFrame(team_stats)
-    # 2017,80,Eastern Washington,111.3,113.6,-2.3,1.0
-    new_row = pd.DataFrame([{'Season': 2017, 'Name': 'Eastern Washington', 'OffensiveRating': 111.3, 'DefensiveRating': 113.6, 'NetRating':-2.3, 'srs_rating':1.0}])
-    df = pd.concat(df, new_row, ignore_index=True)
     return df 
 
 adjusted_ratings =  get_adjusted_ratings(years) 
-srs_ratings = get_srs_ratings(years) 
 
-merged_df = adjusted_ratings.merge(srs_ratings, how="left", on=['teamID', 'season'])
+# 2017,80,Eastern Washington,111.3,113.6,-2.3,1.0
+new_row = pd.DataFrame([{'season': 2017, 'teamID': 80, 'team':'Eastern Washington', 'offensiveRating': 111.3, 'defensiveRating': 113.6, 'netRating':-2.3 }])
+adjusted_ratings = pd.concat([adjusted_ratings, new_row], ignore_index=True)
 
-output_dir = Path("..") / "data" / "preprocessing"
+
+output_dir = Path("../..") / "data" / "preprocessing"
 output_dir.mkdir(parents=True, exist_ok =True)
 output_path = output_dir / "mens_season_ratings.csv"
-merged_df.to_csv(output_path, index=False)
-
+adjusted_ratings.to_csv(output_path, index=False)
+print(f"File successfully exported to {output_path}")
