@@ -8,24 +8,25 @@ w_regular_season_df = pd.read_csv('../data/WRegularSeasonCompactResults.csv')
 
 # Filter teams that are active in the year 2025
 active_m_teams = m_teams_df[(m_teams_df['LastD1Season'] >= 2025) & (m_teams_df['FirstD1Season'] <= 2025)]
-# Determine active women's teams based on WRegularSeasonCompactResults.csv
-womens_2025 = w_regular_season_df[w_regular_season_df['Season'] == 2025]
-active_w_teams_ids = pd.concat([womens_2025['WTeamID'], womens_2025['LTeamID']]).unique()
+active_w_teams_ids = pd.concat([w_regular_season_df[w_regular_season_df['Season'] == 2025]['WTeamID'], 
+                                w_regular_season_df[w_regular_season_df['Season'] == 2025]['LTeamID']]).unique()
 active_w_teams = w_teams_df[w_teams_df['TeamID'].isin(active_w_teams_ids)]
-print(len(active_m_teams))
-print(len(active_w_teams))
+
+print(f"Active men's teams: {len(active_m_teams)}")
+print(f"Active women's teams: {len(active_w_teams)}")
 
 # Generate matchups for the year 2025
 year = 2025
 m_matchups = []
 w_matchups = []
 
+# Ensure matchups are only between active teams
 for team1, team2 in combinations(active_m_teams['TeamID'], 2):
     lower_id = min(team1, team2)
     higher_id = max(team1, team2)
     m_matchups.append(f"{year}_{lower_id}_{higher_id}")
 
-for team1, team2 in combinations(w_teams_df['TeamID'], 2):
+for team1, team2 in combinations(active_w_teams['TeamID'], 2):
     lower_id = min(team1, team2)
     higher_id = max(team1, team2)
     w_matchups.append(f"{year}_{lower_id}_{higher_id}")
