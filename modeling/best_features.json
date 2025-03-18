@@ -1,0 +1,105 @@
+{
+    "selected_features": [
+        "Win_Percentage_1",
+        "Win_Percentage_2",
+        "Win_pct_last_10_games_1",
+        "Win_pct_last_10_games_2",
+        "defensiveRating_1",
+        "defensiveRating_2",
+        "Turnovers_Per_Game_1",
+        "Turnovers_Per_Game_2",
+        "3PAr_1",
+        "3PAr_2",
+        "Offensive_Rebound_Rate_1",
+        "Offensive_Rebound_Rate_2",
+        "offensiveRating_1",
+        "offensiveRating_2",
+        "Pace_1",
+        "Pace_2"
+    ],
+    "brier_scores": [
+        {
+            "season": 2014,
+            "brier_score": 0.17268579621902513
+        },
+        {
+            "season": 2015,
+            "brier_score": 0.14445101341061328
+        },
+        {
+            "season": 2016,
+            "brier_score": 0.15788497621072903
+        },
+        {
+            "season": 2017,
+            "brier_score": 0.1524270208682503
+        },
+        {
+            "season": 2018,
+            "brier_score": 0.16935335724511938
+        },
+        {
+            "season": 2019,
+            "brier_score": 0.132427935533568
+        },
+        {
+            "season": 2021,
+            "brier_score": 0.162036834103305
+        },
+        {
+            "season": 2022,
+            "brier_score": 0.1707862412175531
+        },
+        {
+            "season": 2023,
+            "brier_score": 0.17844007966399103
+        },
+        {
+            "season": 2024,
+            "brier_score": 0.15973861819908808
+        }
+    ],
+    "brier_score": 0.17704291372896053,
+    "avg_brier_score": 0.16002318726712422,
+    "model_parameters": {
+        "objective": "binary:logistic",
+        "base_score": null,
+        "booster": null,
+        "callbacks": null,
+        "colsample_bylevel": null,
+        "colsample_bynode": null,
+        "colsample_bytree": 0.5,
+        "device": null,
+        "early_stopping_rounds": null,
+        "enable_categorical": false,
+        "eval_metric": "logloss",
+        "feature_types": null,
+        "gamma": null,
+        "grow_policy": null,
+        "importance_type": null,
+        "interaction_constraints": null,
+        "learning_rate": 0.01,
+        "max_bin": null,
+        "max_cat_threshold": null,
+        "max_cat_to_onehot": null,
+        "max_delta_step": null,
+        "max_depth": 3,
+        "max_leaves": null,
+        "min_child_weight": 9,
+        "missing": null,
+        "monotone_constraints": null,
+        "multi_strategy": null,
+        "n_estimators": 600,
+        "n_jobs": null,
+        "num_parallel_tree": null,
+        "random_state": 49,
+        "reg_alpha": null,
+        "reg_lambda": null,
+        "sampling_method": null,
+        "scale_pos_weight": null,
+        "subsample": 0.625,
+        "tree_method": null,
+        "validate_parameters": null,
+        "verbosity": null
+    }
+}
