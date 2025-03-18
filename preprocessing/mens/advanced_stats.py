@@ -13,7 +13,7 @@ output = [
 dfs = []
 
 # Loop through the years from 2025 to 2014
-for year in range(2014, 2026):
+for year in range(2003, 2026):
     # Read the CSV file for the current year
     df = pd.read_csv(f"../../data/external/{year}_adv_stats.csv")
     
@@ -30,8 +30,11 @@ for year in range(2014, 2026):
 all_seasons_df = pd.concat(dfs, ignore_index=True)
 
 # Check if 'School' ends with ' NCAA' and remove it
-all_seasons_df['School'] = all_seasons_df['School'].apply(lambda x: x.rstrip(' NCAA') if x.endswith(' NCAA') else x)
+all_seasons_df['School'] = all_seasons_df['School'].apply(lambda x: x.rstrip('NCAA') if x.endswith('NCAA') else x)
+all_seasons_df['School'] = all_seasons_df['School'].str.strip()
 all_seasons_df['School'] = all_seasons_df['School'].apply(lambda x: 'UCLA' if x == 'UCL' else x)
+#all_seasons_df.loc[(advanced_stats['Season'] == 2004) & (all_seasons_df['School'].str.contains('utsa', case=False)), 'School'] = 'UTSA'
+
 
 output_dir = Path("../..") / "data" / "preprocessing"
 output_dir.mkdir(parents=True, exist_ok =True)
