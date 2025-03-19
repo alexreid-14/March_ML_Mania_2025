@@ -114,27 +114,49 @@ def convert_to_serializable(obj):
 
 
 
-df = pd.read_csv("../data/modeling/final_ml.csv")
+mens_df = pd.read_csv("../data/modeling/final_ml.csv")
+womens_df = pd.read_csv("../data/modeling/")
 
-feature_pairs = [
-    ('Win_Percentage_1', 'Win_Percentage_2'),
+mens_feature_pairs = [
     #('FG_Percentage_1', 'FG_Percentage_2'),
+    #('Defensive_Rebound_Rate_1', 'Defensive_Rebound_Rate_2'),
+    #('Opp_FG_Percentage_1', 'Opp_FG_Percentage_2'),
+    #('SOS_1', 'SOS_2'),
+    ('Win_Percentage_1', 'Win_Percentage_2'),
     ('Three_Point_Percentage_1', 'Three_Point_Percentage_2'),
     ('Offensive_Rebound_Rate_1', 'Offensive_Rebound_Rate_2'),
-    #('Defensive_Rebound_Rate_1', 'Defensive_Rebound_Rate_2'),
     ('Turnovers_Per_Game_1', 'Turnovers_Per_Game_2'),
-    #('Opp_FG_Percentage_1', 'Opp_FG_Percentage_2'),
     ('Opp_Free_Throws_Per_Game_1', 'Opp_Free_Throws_Per_Game_2'),
     ('Opp_Turnovers_Per_Game_1', 'Opp_Turnovers_Per_Game_2'),
     ('Win_pct_last_10_games_1', 'Win_pct_last_10_games_2'),
     ('SRS_1', 'SRS_2'),
-    #('SOS_1', 'SOS_2'),
     ('Pace_1', 'Pace_2'),
     ('FTr_1', 'FTr_2'),
     ('3PAr_1', '3PAr_2'),
     ('offensiveRating_1', 'offensiveRating_2'),
     ('defensiveRating_1', 'defensiveRating_2')
 ]
+
+womens_feature_pairs = [
+    ('Win_Percentage_1', 'Win_Percentage_2'),
+    ('FG_Percentage_1', 'FG_Percentage_2'),
+    ('Threes_Per_Game_1', 'Threes_Per_Game_2'),
+    ('Free_Throws_Per_Game_1', 'Free_Throws_Per_Game_2'),
+    ('Free_Throw_Percentage_1', 'Free_Throw_Percentage_2'),
+
+    ('Defensive_Rebound_Rate_1', 'Defensive_Rebound_Rate_2'),
+    ('Opp_FG_Percentage_1', 'Opp_FG_Percentage_2'),
+    ('Win_Percentage_1', 'Win_Percentage_2'),
+    ('Three_Point_Percentage_1', 'Three_Point_Percentage_2'),
+    ('Offensive_Rebound_Rate_1', 'Offensive_Rebound_Rate_2'),
+    ('Turnovers_Per_Game_1', 'Turnovers_Per_Game_2'),
+    ('Opp_Free_Throws_Per_Game_1', 'Opp_Free_Throws_Per_Game_2'),
+    ('Opp_Turnovers_Per_Game_1', 'Opp_Turnovers_Per_Game_2'),
+    ('Win_pct_last_10_games_1', 'Win_pct_last_10_games_2'),
+    ('offensiveRating_1', 'offensiveRating_2'),
+    ('defensiveRating_1', 'defensiveRating_2')
+]
+
 
 
 # Main loop to test different feature combinations
@@ -143,7 +165,7 @@ num_iterations = 12 # Number of different combinations to try
 results = []
 
 for i in range(num_iterations):
-    selected_pairs = select_feature_pairs(feature_pairs, num_pairs_to_select)
+    selected_pairs = select_feature_pairs(mens_feature_pairs, num_pairs_to_select)
     selected_features = [feature for pair in selected_pairs for feature in pair]
     print(f"Iteration {i+1}")
 
