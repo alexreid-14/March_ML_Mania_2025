@@ -2,65 +2,61 @@
     "selected_features": [
         "Win_Percentage_1",
         "Win_Percentage_2",
+        "SRS_1",
+        "SRS_2",
+        "offensiveRating_1",
+        "offensiveRating_2",
+        "3PAr_1",
+        "3PAr_2",
         "Win_pct_last_10_games_1",
         "Win_pct_last_10_games_2",
         "defensiveRating_1",
-        "defensiveRating_2",
-        "Turnovers_Per_Game_1",
-        "Turnovers_Per_Game_2",
-        "3PAr_1",
-        "3PAr_2",
-        "Offensive_Rebound_Rate_1",
-        "Offensive_Rebound_Rate_2",
-        "offensiveRating_1",
-        "offensiveRating_2",
-        "Pace_1",
-        "Pace_2"
+        "defensiveRating_2"
     ],
     "brier_scores": [
         {
             "season": 2014,
-            "brier_score": 0.17268579621902513
+            "brier_score": 0.172086021538947
         },
         {
             "season": 2015,
-            "brier_score": 0.14445101341061328
+            "brier_score": 0.13324867285593617
         },
         {
             "season": 2016,
-            "brier_score": 0.15788497621072903
+            "brier_score": 0.1589449639635368
         },
         {
             "season": 2017,
-            "brier_score": 0.1524270208682503
+            "brier_score": 0.1378130411017693
         },
         {
             "season": 2018,
-            "brier_score": 0.16935335724511938
+            "brier_score": 0.16881983961897587
         },
         {
             "season": 2019,
-            "brier_score": 0.132427935533568
+            "brier_score": 0.1296862399613806
         },
         {
             "season": 2021,
-            "brier_score": 0.162036834103305
+            "brier_score": 0.1528575819091918
         },
         {
             "season": 2022,
-            "brier_score": 0.1707862412175531
+            "brier_score": 0.17855460755978056
         },
         {
             "season": 2023,
-            "brier_score": 0.17844007966399103
+            "brier_score": 0.17898697669389035
         },
         {
             "season": 2024,
-            "brier_score": 0.15973861819908808
+            "brier_score": 0.15120023440103159
         }
     ],
-    "brier_score": 0.17704291372896053,
-    "avg_brier_score": 0.16002318726712422,
+    "brier_score": 0.18189197618222924,
+    "avg_brier_score": 0.156219817960444,
     "model_parameters": {
         "objective": "binary:logistic",
         "base_score": null,

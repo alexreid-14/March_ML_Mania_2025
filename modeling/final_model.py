@@ -2,23 +2,14 @@ import pandas as pd
 import numpy as np
 import json
 import joblib
-from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
-import xgboost as xgb 
+from xgboost import XGBClassifier
 from sklearn.metrics import brier_score_loss 
 from sklearn.metrics import accuracy_score 
-from sklearn.compose import ColumnTransformer
-from sklearn.model_selection import GridSearchCV
-from sklearn.model_selection import RandomizedSearchCV
 from sklearn.calibration import CalibratedClassifierCV
+from sklearn.model_selection import RandomizedSearchCV, cross_val_score
 
-
-def train_and_tune_xgboost(X, y, model_filename="xgb_model.json", param_search=True, n_iter=20, cv=3, random_state=49):
-    # Split the data
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=random_state)
-
+def train_and_tune_xgboost(X, y, model_filename="xgb_model.json", param_search=True, n_iter=20, cv=5, random_state=49):
     # Define parameter grid for tuning
     param_dist = {
         'n_estimators': np.arange(100, 1001, 100),
@@ -30,7 +21,7 @@ def train_and_tune_xgboost(X, y, model_filename="xgb_model.json", param_search=T
     }
 
     # Initialize base XGBoost model
-    xgb_model = xgb.XGBClassifier(objective="binary:logistic", eval_metric="logloss", random_state=random_state)
+    xgb_model = XGBClassifier(objective="binary:logistic", eval_metric="logloss", random_state=random_state)
     best_params = None  # Placeholder for best parameters
 
     if param_search:
@@ -49,7 +40,7 @@ def train_and_tune_xgboost(X, y, model_filename="xgb_model.json", param_search=T
         )
 
         # Fit the model with hyperparameter tuning
-        random_search.fit(X_train, y_train)
+        random_search.fit(X, y)  # Use the entire dataset
         best_params = random_search.best_params_
         print("Best Parameters:", best_params)
 
@@ -57,15 +48,18 @@ def train_and_tune_xgboost(X, y, model_filename="xgb_model.json", param_search=T
         xgb_model = random_search.best_estimator_
     else:
         print("Training with default hyperparameters...")
-        xgb_model.fit(X_train, y_train)
+        xgb_model.fit(X, y)  # Use the entire dataset
 
-    # Evaluate Brier Score on test set
-    y_pred_probs = xgb_model.predict_proba(X_test)[:, 1]
-    brier = brier_score_loss(y_test, y_pred_probs)
-    print(f"Brier Score on test set: {brier:.4f}")
+    # Cross-validated Brier Score on the entire dataset
+    cv_brier_scores = -cross_val_score(xgb_model, X, y, scoring='neg_brier_score', cv=cv)
+    brier_score = np.mean(cv_brier_scores)
+    print(f"Cross-validated Brier Score: {np.mean(cv_brier_scores):.4f} (±{np.std(cv_brier_scores):.4f})")
 
     # Save the trained model
-    return xgb_model, brier 
+    xgb_model.save_model(model_filename)
+    print(f"Model saved to {model_filename}")
+
+    return xgb_model, brier_score
 
 def test_model_on_each_season(model, df, feature_columns):
     seasons = df['Season'].unique()
@@ -144,8 +138,8 @@ feature_pairs = [
 
 
 # Main loop to test different feature combinations
-num_pairs_to_select = 8  # Number of feature pairs to select
-num_iterations = 2  # Number of different combinations to try
+num_pairs_to_select = 6  # Number of feature pairs to select
+num_iterations = 12 # Number of different combinations to try
 results = []
 
 for i in range(num_iterations):
@@ -200,7 +194,7 @@ print(f"Best features saved as {best_features_filename}")
 
 # Print the best result
 print("\nBest Feature Subset:")
-print(f"Iteration: {best_result['iteration']}")
+print(f"Iteration: {best_result['iteration']}\n")
 print(f"Selected Features: {best_result['selected_features']}\n")
 print(f"Brier Score on Test Set: {best_result['brier_score']}\n")
 print(f"Average Brier Score: {best_result['avg_brier_score']}\n")
