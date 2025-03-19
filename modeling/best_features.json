@@ -1,62 +1,62 @@
 {
     "selected_features": [
+        "Offensive_Rebound_Rate_1",
+        "Offensive_Rebound_Rate_2",
         "Win_Percentage_1",
         "Win_Percentage_2",
+        "FTr_1",
+        "FTr_2",
         "SRS_1",
         "SRS_2",
-        "offensiveRating_1",
-        "offensiveRating_2",
-        "3PAr_1",
-        "3PAr_2",
+        "Opp_Free_Throws_Per_Game_1",
+        "Opp_Free_Throws_Per_Game_2",
         "Win_pct_last_10_games_1",
-        "Win_pct_last_10_games_2",
-        "defensiveRating_1",
-        "defensiveRating_2"
+        "Win_pct_last_10_games_2"
     ],
     "brier_scores": [
         {
             "season": 2014,
-            "brier_score": 0.172086021538947
+            "brier_score": 0.16752056598656215
         },
         {
             "season": 2015,
-            "brier_score": 0.13324867285593617
+            "brier_score": 0.13769352205269828
         },
         {
             "season": 2016,
-            "brier_score": 0.1589449639635368
+            "brier_score": 0.14913597870966336
         },
         {
             "season": 2017,
-            "brier_score": 0.1378130411017693
+            "brier_score": 0.13236910873293692
         },
         {
             "season": 2018,
-            "brier_score": 0.16881983961897587
+            "brier_score": 0.1702107231216508
         },
         {
             "season": 2019,
-            "brier_score": 0.1296862399613806
+            "brier_score": 0.1316944713191442
         },
         {
             "season": 2021,
-            "brier_score": 0.1528575819091918
+            "brier_score": 0.15672505094324105
         },
         {
             "season": 2022,
-            "brier_score": 0.17855460755978056
+            "brier_score": 0.1827276010563314
         },
         {
             "season": 2023,
-            "brier_score": 0.17898697669389035
+            "brier_score": 0.16679532631059288
         },
         {
             "season": 2024,
-            "brier_score": 0.15120023440103159
+            "brier_score": 0.15374802065135434
         }
     ],
-    "brier_score": 0.18189197618222924,
-    "avg_brier_score": 0.156219817960444,
+    "brier_score": 0.18428803770201727,
+    "avg_brier_score": 0.15486203688841754,
     "model_parameters": {
         "objective": "binary:logistic",
         "base_score": null,
