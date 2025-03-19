@@ -116,6 +116,7 @@ def convert_to_serializable(obj):
 
 mens_df = pd.read_csv("../data/modeling/final_ml.csv")
 womens_df = pd.read_csv("../data/modeling/")
+is_mens = True 
 
 mens_feature_pairs = [
     #('FG_Percentage_1', 'FG_Percentage_2'),
@@ -169,7 +170,7 @@ for i in range(num_iterations):
     selected_features = [feature for pair in selected_pairs for feature in pair]
     print(f"Iteration {i+1}")
 
-    df_subset = df[['Season', 'Team1_Wins', 'reg_season_pred', 'Seed_1', 'Seed_2'] + selected_features]
+    df_subset = mens_df[['Season', 'Team1_Wins', 'reg_season_pred', 'Seed_1', 'Seed_2'] + selected_features]
     df_subset = pd.get_dummies(df_subset, columns=['Seed_1', 'Seed_2'], prefix=['T1_Seed','T2_Seed'], dtype=int)
 
     features = df_subset.drop(columns=['Season', 'Team1_Wins'])
@@ -198,12 +199,20 @@ for i in range(num_iterations):
 best_result = min(results, key=lambda x: x['brier_score'])
 
 # Save the best model 
-model_filename = "best_xgb_model.model"
+if is_mens: 
+    model_filename = "mens_best_xgb_model.model"
+else: 
+    moedl_filename = "womens_best_xgb_model.model"
 best_result['model'].save_model(model_filename)
+
 print(f"Model saved as {model_filename}")
 
-# Save the best features as JSON
-best_features_filename = "best_features.json"
+if is_mens: 
+    best_features_filename = "mens_best_features.json"
+else:
+    best_features_filename = "womens_best_features.json"
+  
+
 with open(best_features_filename, "w") as f:
     json.dump({
         "selected_features": best_result['selected_features'],
