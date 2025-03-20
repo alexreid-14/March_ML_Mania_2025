@@ -53,7 +53,8 @@ def get_srs_ratings(years):
                  row = {
                      "season": teams['season'],
                      'teamID': teams['teamId'],
-                     'srs_rating': teams['rating'],
+                     'team': teams['team'], 
+                     'srs_rating': teams['rating']
                  }
                  team_stats.append(row)
                  
@@ -62,11 +63,45 @@ def get_srs_ratings(years):
     df = pd.DataFrame(team_stats)
     return df 
 
-adjusted_ratings =  get_adjusted_ratings(years) 
+def get_team_height(years):
+    team_stats = []  # Store team data
 
-# 2017,80,Eastern Washington,111.3,113.6,-2.3,1.0
+    for year in years:
+        url = f"{base_url}/teams/roster?season={year}"
+        response = requests.get(url, headers=headers)
+
+        if response.status_code == 200:
+            season_data = response.json()
+
+            # Loop through each team in the season data
+            for team in season_data:
+                # Extract player heights from the players list
+                player_heights = [player['height'] for player in team['players'] if player['height'] is not None]
+
+                # Calculate average height if there are players
+                avg_height = sum(player_heights) / len(player_heights) if player_heights else None
+
+                # Add data to row
+                row = {
+                    "season": team['season'],
+                    "teamID": team['teamId'],
+                    "avg_height": round(avg_height, 2) if avg_height else None,  # Round to 2 decimals
+                }
+                team_stats.append(row)
+
+        else:
+            print(f"Failed to retrieve data for {year}. Status code: {response.status_code}")
+    # Create and return the DataFrame
+    df = pd.DataFrame(team_stats)
+    return df
+
+adjusted_ratings =  get_adjusted_ratings(years) 
 new_row = pd.DataFrame([{'season': 2017, 'teamID': 80, 'team':'Eastern Washington', 'offensiveRating': 111.3, 'defensiveRating': 113.6, 'netRating':-2.3 }])
 adjusted_ratings = pd.concat([adjusted_ratings, new_row], ignore_index=True)
+
+average_height = get_team_height(years) 
+
+adjusted_ratings = adjusted_ratings.merge(average_height, how='left', on=['season', 'teamID'])
 
 
 output_dir = Path("../..") / "data" / "preprocessing"

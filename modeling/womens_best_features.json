@@ -1,62 +1,78 @@
 {
     "selected_features": [
+        "Free_Throws_Per_Game_1",
+        "Free_Throws_Per_Game_2",
+        "Threes_Per_Game_1",
+        "Threes_Per_Game_2",
+        "FG_Percentage_1",
+        "FG_Percentage_2",
         "Offensive_Rebound_Rate_1",
         "Offensive_Rebound_Rate_2",
-        "Win_Percentage_1",
-        "Win_Percentage_2",
-        "FTr_1",
-        "FTr_2",
-        "SRS_1",
-        "SRS_2",
-        "Opp_Free_Throws_Per_Game_1",
-        "Opp_Free_Throws_Per_Game_2",
         "Win_pct_last_10_games_1",
-        "Win_pct_last_10_games_2"
+        "Win_pct_last_10_games_2",
+        "Opp_Turnovers_Per_Game_1",
+        "Opp_Turnovers_Per_Game_2"
     ],
     "brier_scores": [
         {
+            "season": 2010,
+            "brier_score": 0.03860433728663664
+        },
+        {
+            "season": 2011,
+            "brier_score": 0.03101152100205194
+        },
+        {
+            "season": 2012,
+            "brier_score": 0.02948377484172103
+        },
+        {
+            "season": 2013,
+            "brier_score": 0.04117331666540538
+        },
+        {
             "season": 2014,
-            "brier_score": 0.16752056598656215
+            "brier_score": 0.04530890784892493
         },
         {
             "season": 2015,
-            "brier_score": 0.13769352205269828
+            "brier_score": 0.03988945082435934
         },
         {
             "season": 2016,
-            "brier_score": 0.14913597870966336
+            "brier_score": 0.04908880726922908
         },
         {
             "season": 2017,
-            "brier_score": 0.13236910873293692
+            "brier_score": 0.04218680489649892
         },
         {
             "season": 2018,
-            "brier_score": 0.1702107231216508
+            "brier_score": 0.03811977563242033
         },
         {
             "season": 2019,
-            "brier_score": 0.1316944713191442
+            "brier_score": 0.031171728041252022
         },
         {
             "season": 2021,
-            "brier_score": 0.15672505094324105
+            "brier_score": 0.036787864083883605
         },
         {
             "season": 2022,
-            "brier_score": 0.1827276010563314
+            "brier_score": 0.042473666367258335
         },
         {
             "season": 2023,
-            "brier_score": 0.16679532631059288
+            "brier_score": 0.05609473866082379
         },
         {
             "season": 2024,
-            "brier_score": 0.15374802065135434
+            "brier_score": 0.038196360067743226
         }
     ],
-    "brier_score": 0.18428803770201727,
-    "avg_brier_score": 0.15486203688841754,
+    "brier_score": 0.156812069228609,
+    "avg_brier_score": 0.039970789534872035,
     "model_parameters": {
         "objective": "binary:logistic",
         "base_score": null,
@@ -74,18 +90,18 @@
         "grow_policy": null,
         "importance_type": null,
         "interaction_constraints": null,
-        "learning_rate": 0.01,
+        "learning_rate": 0.042222222222222223,
         "max_bin": null,
         "max_cat_threshold": null,
         "max_cat_to_onehot": null,
         "max_delta_step": null,
-        "max_depth": 3,
+        "max_depth": 6,
         "max_leaves": null,
-        "min_child_weight": 9,
+        "min_child_weight": 1,
         "missing": null,
         "monotone_constraints": null,
         "multi_strategy": null,
-        "n_estimators": 600,
+        "n_estimators": 300,
         "n_jobs": null,
         "num_parallel_tree": null,
         "random_state": 49,
@@ -93,7 +109,7 @@
         "reg_lambda": null,
         "sampling_method": null,
         "scale_pos_weight": null,
-        "subsample": 0.625,
+        "subsample": 0.875,
         "tree_method": null,
         "validate_parameters": null,
         "verbosity": null

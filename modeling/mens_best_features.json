@@ -1,0 +1,121 @@
+{
+    "selected_features": [
+        "Opp_Free_Throws_Per_Game_1",
+        "Opp_Free_Throws_Per_Game_2",
+        "defensiveRating_1",
+        "defensiveRating_2",
+        "FG_Percentage_1",
+        "FG_Percentage_2",
+        "SRS_1",
+        "SRS_2",
+        "offensiveRating_1",
+        "offensiveRating_2",
+        "Opp_FG_Percentage_1",
+        "Opp_FG_Percentage_2",
+        "Offensive_Rebound_Rate_1",
+        "Offensive_Rebound_Rate_2",
+        "Turnovers_Per_Game_1",
+        "Turnovers_Per_Game_2",
+        "avg_height_1",
+        "avg_height_2",
+        "Opp_Threes_Per_Game_1",
+        "Opp_Threes_Per_Game_2",
+        "Pace_1",
+        "Pace_2",
+        "SOS_1",
+        "SOS_2",
+        "Win_Percentage_1",
+        "Win_Percentage_2",
+        "Turnover_Margin_1",
+        "Turnover_Margin_2",
+        "Win_pct_last_10_games_1",
+        "Win_pct_last_10_games_2",
+        "Opp_Turnovers_Per_Game_1",
+        "Opp_Turnovers_Per_Game_2"
+    ],
+    "brier_scores": [
+        {
+            "season": 2014,
+            "brier_score": 0.1358165064859334
+        },
+        {
+            "season": 2015,
+            "brier_score": 0.1237554603420391
+        },
+        {
+            "season": 2016,
+            "brier_score": 0.13411665602622305
+        },
+        {
+            "season": 2017,
+            "brier_score": 0.12333775990623458
+        },
+        {
+            "season": 2018,
+            "brier_score": 0.13713418497563823
+        },
+        {
+            "season": 2019,
+            "brier_score": 0.11100680624661265
+        },
+        {
+            "season": 2021,
+            "brier_score": 0.1428691773047166
+        },
+        {
+            "season": 2022,
+            "brier_score": 0.1606006657413948
+        },
+        {
+            "season": 2023,
+            "brier_score": 0.15394041782384302
+        },
+        {
+            "season": 2024,
+            "brier_score": 0.13689843404783394
+        }
+    ],
+    "brier_score": 0.17472413225507233,
+    "avg_brier_score": 0.13594760689004695,
+    "model_parameters": {
+        "objective": "binary:logistic",
+        "base_score": null,
+        "booster": null,
+        "callbacks": null,
+        "colsample_bylevel": null,
+        "colsample_bynode": null,
+        "colsample_bytree": 0.5,
+        "device": null,
+        "early_stopping_rounds": null,
+        "enable_categorical": false,
+        "eval_metric": "logloss",
+        "feature_types": null,
+        "gamma": null,
+        "grow_policy": null,
+        "importance_type": null,
+        "interaction_constraints": null,
+        "learning_rate": 0.01,
+        "max_bin": null,
+        "max_cat_threshold": null,
+        "max_cat_to_onehot": null,
+        "max_delta_step": null,
+        "max_depth": 3,
+        "max_leaves": null,
+        "min_child_weight": 9,
+        "missing": null,
+        "monotone_constraints": null,
+        "multi_strategy": null,
+        "n_estimators": 600,
+        "n_jobs": null,
+        "num_parallel_tree": null,
+        "random_state": 49,
+        "reg_alpha": null,
+        "reg_lambda": null,
+        "sampling_method": null,
+        "scale_pos_weight": null,
+        "subsample": 0.625,
+        "tree_method": null,
+        "validate_parameters": null,
+        "verbosity": null
+    }
+}
