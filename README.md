@@ -8,12 +8,19 @@ This project leverages a variety of historical statistics from both Mens and Wom
 
 **Additional Sources:** 
  - [Sports Reference](https://SportsReference.com): Used this resource to pull various advanced statistics for Mens basketball teams, including SRS, SOS, Pace, 3PAr and FTr 
- - [College Basketball Data](https://CollegeDasketballData.com): Leveraged their API to pull historical offensive and defensive basketball rankings for mens teams. Also used the API to find the average height for each mens basketball team going back to 2014 
+ - [College Basketball Data](https://collegebasketballdata.com): Leveraged their API to pull historical offensive and defensive basketball rankings for mens teams. Also used the API to find the average height for each mens basketball team going back to 2014 
 
  ## Model Pipeline
 The project follows these steps:
 1. **Data Preprocessing:** Clean and merge regular season, tournament, and team data. 
-2. **Feature Engineering:** Create statistical features such as team efficiency, seeding impact, and historical performance.
+  - Preprocessing
+   - Mens
+    Aggregated mens team statistics over each season, pulled advanced stats from API's and external data sources, saved results as a csv
+   - Womens 
+    Aggregated womens team statistics over each season, saved results as a csv
+   - ML
+    Prepared the preprocessed data to be ready for the ML model. Included combining mens season summary statistics from a variety of sources and adding team summary statistics to historical game outcomes so it could be used for modeling 
+2. **Regular Season Model Training (Mens and Womens):** Create statistical features such as team efficiency, seeding impact, and historical performance.
 3. **Model Training:** Train models (e.g., Logistic Regression, XGBoost) with hyperparameter tuning.
 4. **Evaluation:** Optimize and validate models using cross-validation and Brier score.
 5. **Prediction:** Generate probabilistic predictions for tournament outcomes.
