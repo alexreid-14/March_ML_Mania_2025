@@ -1,7 +1,9 @@
 # 🏀 March Madness Game Prediction Model
 This project predicts the outcomes of NCAA March Madness tournament games using machine learning models. It leverages features such as regular season predictions, team seeds, and other game-related statistics to train and evaluate models, with a focus on optimizing Brier Score for probabilistic predictions. Predictions are done for both Mens and Womens march madness games.
 
+## Results
 This project is a part of the March ML Mania 2025 Kaggle competition where participants compete to seee who can have the most accurate predictions for march madness games, evaulated based on their Brier score. 
+**[Outcome](https://www.kaggle.com/certification/competitions/alexreid16/march-machine-learning-mania-2025):** Finished in the top **94th** percentile (97th out of 1727) with a Brier score of **.11063**
 
 ## Data 
 This project leverages a variety of historical statistics from both Mens and Womens College Basketball. Most of the data was provided from Kaggle, while certain advanced statistics were pulled from external sources to provide a more robust ML solution. 
