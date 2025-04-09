@@ -3,6 +3,7 @@ This project predicts the outcomes of NCAA March Madness tournament games using 
 
 ## Results
 This project is a part of the March ML Mania 2025 Kaggle competition where participants compete to seee who can have the most accurate predictions for march madness games, evaulated based on their Brier score. 
+
 **[Outcome](https://www.kaggle.com/certification/competitions/alexreid16/march-machine-learning-mania-2025):** Finished in the top **94th** percentile (97th out of 1727) with a Brier score of **.11063**
 
 ## Data 
